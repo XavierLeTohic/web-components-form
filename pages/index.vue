@@ -2,8 +2,25 @@
   <div class="page">
     <div class="container">
       <complex-form>
-        <complex-input placeholder="Type text here" type="text" required-label="is required" required />
-        <complex-input placeholder="Type email here" type="email" required-label="is required" required />
+        <complex-input placeholder="Text" type="text" required-label="is required" required />
+        <complex-input placeholder="Email" type="email" required-label="is required" required />
+        <complex-input 
+          field="Password"
+          placeholder="Password" 
+          required-label="is required"
+          type="password"
+          name="password"
+          required 
+        />
+        <complex-input 
+          field="This field"
+          placeholder="Password confirmation" 
+          required-label="is required" 
+          type="password" 
+          match="password"
+          name="passwordConfirmation"
+          required 
+        />
         <button type="submit">Submit</button>
       </complex-form>
     </div>

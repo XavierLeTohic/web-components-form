@@ -174,6 +174,20 @@ class Input extends HTMLElement {
       });
     }
 
+    if(this.hasAttribute('match') === true) {
+      const matchName = this.getAttribute('match')
+      const inputs = this.root.host.parentElement.root.host.getElementsByTagName('complex-input');
+      const matchInput = Array.from(inputs).find((i) => {
+        return typeof i.input.name !== 'undefined' && i.input.name === matchName
+      })
+
+      if(!matchInput) {
+        throw new Error(`complex-input with name "${matchName}" was not found`)
+      }
+
+      this.matchInput = matchInput
+    }
+
     // Create the validator for later
     this.validator = new AsyncValidator({ [fieldName]: this.validationRules });
   }
@@ -194,6 +208,15 @@ class Input extends HTMLElement {
       if(errors && errors.length) {
         this.setAttribute('invalid', true);
         this.setAttribute('error', errors[0].message);
+        return reject();
+      }
+
+      if(typeof this.matchInput !== 'undefined' && value !== this.matchInput.input.value) {
+
+        const matchInputField = this.matchInput.getAttribute('field') || this.matchInput.input.name || this.matchInput.input.type
+
+        this.setAttribute('invalid', true);
+        this.setAttribute('error', `${fieldName} do not match ${matchInputField}`);
         return reject();
       }
 
