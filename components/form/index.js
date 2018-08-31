@@ -49,10 +49,10 @@ class ComplexForm extends HTMLElement {
     Promise.all(validations)
       .then((data) => {
         const values = data.reduce((p, c) => ({...p, ...c}), {});
-        this.dispatchEvent(new CustomEvent('success', { detail: values }));
+        this.dispatchEvent(new CustomEvent('onValid', { detail: values }));
       })
       .catch(() => {
-        this.dispatchEvent(new Event('error'));
+        this.dispatchEvent(new Event('onError'));
       });
   }
 
