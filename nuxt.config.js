@@ -22,7 +22,6 @@ module.exports = {
   },
   plugins: [
     '~/plugins/webcomponents.js',
-    { src: '~/plugins/customElements.js', ssr: false },
     { src: '~/plugins/webComponentPolyfill.js', ssr: false },
   ],
 }

@@ -7,7 +7,9 @@ class Input extends HTMLElement {
     this.root.innerHTML = `
       <style>
         :host {
-          display: block;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
         }
 
         :host button.clear {
@@ -29,6 +31,7 @@ class Input extends HTMLElement {
           display: block;
           color: red;
           line-height: 17px;
+          margin-top: 3px;
         }
 
         :host([invalid="true"])::after::first-letter {
