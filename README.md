@@ -1,5 +1,3 @@
-## Complex Form :construction:
+## Validation form using web component
 
-Complex Form is a native web components based form validation using async-validator.
-
-### [Demo](https://complex-form.now.sh/)
+Native web components based form validation using async-validator.
